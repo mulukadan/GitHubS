@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.m.githubs.controller.DetailActivity;
 import com.m.githubs.model.Item;
@@ -38,13 +39,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ItemAdapter.ViewHolder viewHolder, int position) {
         viewHolder.title.setText(items.get(position).getLogin());
-        viewHolder.githublink1.setText(items.get(position).getHtmlUrl());
+        viewHolder.githibLink1.setText(items.get(position).getHtmlUrl());
 
         Picasso.with(context)
                 .load(items.get(position).getAvatarUrl())
                 .placeholder(R.drawable.load)
                 .into(viewHolder.imageView);
-
     }
 
     @Override
@@ -60,6 +60,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
             imageView = (ImageView) view.findViewById(R.id.cover);
+            githibLink1=(TextView) view.findViewById(R.id.githublink1);
 
             //On item Click
             imageView.setOnClickListener(new View.OnClickListener(){
@@ -75,7 +76,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                         intent.putExtra("avatar_url", items.get(pos).getAvatarUrl());
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
-
+                        Toast.makeText(v.getContext(), "You Clicked " + clickedDataItem.getLogin(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
