@@ -74,7 +74,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                         intent.putExtra("html_url", items.get(pos).getHtmlUrl());
                         intent.putExtra("avatar_url", items.get(pos).getAvatarUrl());
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivities(intent);
+                        context.startActivity(intent);
 
                     }
                 }
