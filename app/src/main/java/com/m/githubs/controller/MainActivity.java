@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 loadJSON();
-                Toast.makeText(MainActivity.this,"ithib Users refreshed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Github Users refreshed", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -68,12 +68,13 @@ public class MainActivity extends AppCompatActivity {
         try {
             Client client = new Client();
             Service apiService = Client.getClient().create(Service.class);
-            Call<ItemResponse> call = apiService.getItems();
+            Call<ItemResponse> call = apiService.getItems("/search/users?q=language:java+location:nairobi&per_page=100");
             call.enqueue(new retrofit2.Callback<ItemResponse>() {
                 @Override
                 public void onResponse(Call<ItemResponse> call, retrofit2.Response<ItemResponse> response) {
                     List<Item> items = response.body().getItems();
                     recyclerView.setAdapter(new ItemAdapter(getApplicationContext(),items));
+
                     recyclerView.smoothScrollToPosition(0);
                     swipeContainer.setRefreshing(false);
                     pd.hide();

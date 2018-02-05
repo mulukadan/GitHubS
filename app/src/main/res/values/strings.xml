@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">GitHubS</string>
     <string name="internet">Check your internet Connection</string>
+    <string-array name="languages">
+        <item>Java</item>
+        <item>Css</item>
+        <item>Html</item>
+        <item>Python</item>
+        <item>JavaScript</item>
+        <item>Php</item>
+    </string-array>
+
 </resources>

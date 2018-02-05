@@ -9,6 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Client {
     public static final String BASE_URL = "http://api.github.com";
+    public static final String TOKEN = "&access_token=cc4eae6c3054a503473ba8b8627de6198e05c890";
     public static Retrofit retrofit = null;
 
     public static  Retrofit getClient(){

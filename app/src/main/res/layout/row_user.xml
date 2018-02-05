@@ -9,18 +9,21 @@
     android:clickable="true"
     android:focusable="true"
     android:elevation="60dp"
+
     android:foreground="?android:attr/selectableItemBackground"
     >
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/divider">
 
         <ImageView
             android:layout_width="100sp"
             android:layout_height="match_parent"
             android:id="@+id/cover"
-            android:layout_marginLeft="20sp"
-            android:layout_marginTop="10sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="5sp"
             android:scaleType="fitXY"/>
         <TextView
             android:layout_width="wrap_content"
@@ -32,6 +35,7 @@
             android:layout_toRightOf="@id/cover"
             android:layout_marginTop="20sp"
             android:layout_marginLeft="20sp"
+            android:textColor="@color/colorAccent"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -41,7 +45,8 @@
             android:layout_toRightOf="@id/cover"
             android:layout_marginLeft="20sp"
             android:layout_marginTop="20sp"
-            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="#1a237e"
+            android:textSize="12sp"
             android:layout_below="@id/title"
             android:textStyle="bold"
             />

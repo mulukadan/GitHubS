@@ -2,7 +2,9 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#90a4ae">
+
 
     <ImageView
         android:layout_width="match_parent"
@@ -19,12 +21,15 @@
         android:layout_below="@id/uer_image_header"
         android:layout_marginTop="10sp"
         android:textStyle="bold"
+        android:textColor="@color/icons"
         android:textSize="25sp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/username"
+        android:textAlignment="center"
         android:layout_marginLeft="10sp"
+        android:textColor="@color/primary_text"
         android:layout_marginTop="3sp"
         android:textSize="20sp"
         android:layout_below="@id/header"/>
@@ -34,6 +39,8 @@
         android:id="@+id/githublink"
         android:layout_marginLeft="10sp"
         android:text="Github Profile Link"
+
+        android:textColor="@color/icons"
         android:layout_below="@id/username"
         android:textAlignment="center"
         android:layout_marginTop="3sp"
@@ -45,6 +52,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/link"
         android:layout_marginLeft="10sp"
+        android:textColor="@color/primary_text"
+        android:textAlignment="center"
         android:layout_marginTop="3sp"
         android:textSize="20sp"
         android:layout_below="@id/githublink"/>
