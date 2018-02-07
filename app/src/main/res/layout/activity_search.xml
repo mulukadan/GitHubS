@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorAccent"
     tools:context="com.m.githubs.controller.SearchActivity">
 
     <ImageView
-        android:layout_width="100sp"
+        android:layout_width="match_parent"
         android:layout_height="100sp"
         android:src="@drawable/githublogo"
         android:textAlignment="center"
@@ -28,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
         android:text="Search"
+        android:id="@+id/searchS"
         android:textSize="25sp"
         />
     <TextView
@@ -100,3 +106,4 @@
     </LinearLayout>
 
 </LinearLayout>
+</ScrollView>

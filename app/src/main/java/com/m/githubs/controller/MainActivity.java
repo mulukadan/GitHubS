@@ -1,6 +1,7 @@
 package com.m.githubs.controller;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.m.githubs.Constants;
 import com.m.githubs.ItemAdapter;
 import com.m.githubs.R;
 import com.m.githubs.api.Client;
@@ -27,6 +29,7 @@ import okhttp3.Response;
 import retrofit2.Call;
 
 public class MainActivity extends AppCompatActivity {
+    private String mLocation,mLanguage;
 
     private RecyclerView recyclerView;
     TextView Disconnected;
@@ -39,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        mLocation = intent.getStringExtra("location");
+        mLanguage = intent.getStringExtra("language");
 
         initViews();
 
@@ -68,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             Client client = new Client();
             Service apiService = Client.getClient().create(Service.class);
-            Call<ItemResponse> call = apiService.getItems("/search/users?q=language:java+location:nairobi&per_page=100");
+            Call<ItemResponse> call = apiService.getItems("/search/users?q=language:"+mLanguage+"+location:"+mLocation+"&per_page=100&"+ Constants.TOKEN);
             call.enqueue(new retrofit2.Callback<ItemResponse>() {
                 @Override
                 public void onResponse(Call<ItemResponse> call, retrofit2.Response<ItemResponse> response) {

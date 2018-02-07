@@ -13,7 +13,7 @@ import com.m.githubs.R;
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText username, location,language;
-    Button searchM;
+    Button searchM, searchS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,23 +24,45 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         location = (EditText) findViewById(R.id.location);
         language = (EditText) findViewById(R.id.language);
         searchM = (Button)findViewById(R.id.searchM);
-
-        String usrName = username.getText().toString();
+        searchS = (Button)findViewById(R.id.searchS);
 
         searchM.setOnClickListener(this);
+        searchS.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
         if(v == searchM){
-
-            Toast.makeText(SearchActivity.this, "Search Clicked", Toast.LENGTH_LONG);
             String loc = location.getText().toString();
             String lang = language.getText().toString();
 
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
+            if(loc.length()>2 && lang.length()>0) {
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("location", loc);
+                intent.putExtra("language", lang);
+                startActivity(intent);
+            }else{
+                Toast.makeText(SearchActivity.this, "Enter Location & Language!!", Toast.LENGTH_LONG).show();
+            }
+        }
+
+        if(v == searchS){
+            String usrName = username.getText().toString();
+
+            if(usrName.length()>2) {
+
+                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                intent.putExtra("login", usrName);
+                intent.putExtra("html_url", "https://github.com/"+usrName);
+                username.setText("");
+                startActivity(intent);
+                Toast.makeText(v.getContext(), "Loading " + usrName+"...", Toast.LENGTH_SHORT).show();
+
+            }else{
+                Toast.makeText(SearchActivity.this, "Enter Username!!", Toast.LENGTH_LONG).show();
+            }
         }
     }
 }
