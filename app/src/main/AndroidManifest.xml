@@ -11,20 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".controller.SplashActivity" android:theme="@style/SplashTheme">
+        <activity
+            android:name=".controller.SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
-
         </activity>
-
         <activity android:name=".controller.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".controller.SearchActivity" />
@@ -36,9 +36,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".controller.MainActivity" />
         </activity>
-        <activity android:name=".controller.SearchActivity">
-
-        </activity>
+        <activity android:name=".controller.SearchActivity" />
+        <activity
+            android:name=".UserTabActivity"
+            android:parentActivityName=".controller.MainActivity"
+            android:label="@string/title_activity_user_tab"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

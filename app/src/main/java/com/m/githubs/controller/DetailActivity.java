@@ -61,7 +61,7 @@ public class DetailActivity extends AppCompatActivity {
         mUser = getIntent().getExtras().getString("login");
 
         loadUser();
-        getSupportActionBar().setTitle("Details Activity");
+        getSupportActionBar().setTitle("User Details");
     }
     private Intent createShareForcastIntent(){
         String username = getIntent().getExtras().getString("login");

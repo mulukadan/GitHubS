@@ -1,5 +1,7 @@
 package com.m.githubs;
 
+import android.location.Location;
+
 import com.m.githubs.BuildConfig;
 
 /**
@@ -8,4 +10,6 @@ import com.m.githubs.BuildConfig;
 
 public class Constants {
     public static final String TOKEN = BuildConfig.GITHUB_API_KEY;
+    public static String Location = null;
+    public static String Language = null;
 }

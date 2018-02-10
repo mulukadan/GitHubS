@@ -43,10 +43,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setTitle("");
         Intent intent = getIntent();
         mLocation = intent.getStringExtra("location");
         mLanguage = intent.getStringExtra("language");
-
+        getSupportActionBar().setTitle(mLanguage + " Gurus in "+mLocation);
+        Constants.Language = mLanguage;
+        Constants.Location = mLanguage;
         initViews();
 
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);

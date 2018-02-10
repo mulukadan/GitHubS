@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginTop="10sp"
+    android:layout_marginLeft="10sp"
+    android:layout_marginRight="10sp"
+    android:clickable="true"
+    android:focusable="true"
+    android:elevation="60dp"
+
+    android:foreground="?android:attr/selectableItemBackground"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:layout_marginLeft="10sp"
+            android:text="username"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textColor="@color/colorPrimaryDark"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fork1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/forks"
+                android:text="0"
+                android:textColor="#1a237e"
+                android:layout_marginLeft="10sp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                />
+            <ImageView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:src="@drawable/clock"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/date"
+                android:text="2017/01/12"
+                android:textColor="#1a237e"
+                android:layout_marginLeft="10sp"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                />
+            <ImageView
+                android:layout_width="30sp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:src="@drawable/size"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/size"
+                android:text="0"
+                android:textColor="#1a237e"
+                android:layout_marginLeft="10sp"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                />
+            <ImageView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:src="@drawable/code"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/language"
+                android:text="Java"
+                android:textColor="#1a237e"
+                android:layout_marginLeft="10sp"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

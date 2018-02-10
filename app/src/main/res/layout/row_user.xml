@@ -15,7 +15,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/divider">
+        >
 
         <ImageView
             android:layout_width="100sp"
@@ -35,7 +35,8 @@
             android:layout_toRightOf="@id/cover"
             android:layout_marginTop="20sp"
             android:layout_marginLeft="20sp"
-            android:textColor="@color/colorAccent"
+            android:textSize="30sp"
+            android:textColor="@color/colorPrimaryDark"
             />
         <TextView
             android:layout_width="wrap_content"

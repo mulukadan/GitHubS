@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.m.githubs.R;
+import com.m.githubs.UserTabActivity;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -53,7 +54,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
             if(usrName.length()>2) {
 
-                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                Intent intent = new Intent(getApplicationContext(), UserTabActivity.class);
                 intent.putExtra("login", usrName);
                 intent.putExtra("html_url", "https://github.com/"+usrName);
                 username.setText("");
