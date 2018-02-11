@@ -36,15 +36,6 @@ import retrofit2.Callback;
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
 public class UserTabActivity extends AppCompatActivity {
-
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     TextView Link, Username, Following, Followers, Created, Repos, Bio;
@@ -68,7 +59,7 @@ public class UserTabActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mUser = getIntent().getExtras().getString("login");
-        getSupportActionBar().setTitle("User Details");
+        getSupportActionBar().setTitle(mUser +" Details");
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -134,10 +125,10 @@ public class UserTabActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_user_tab, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
+//            View rootView = inflater.inflate(R.layout.fragment_user_tab, container, false);
+//            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+//            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            return null;
         }
     }
 
@@ -154,25 +145,28 @@ public class UserTabActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
            switch (position){
-               case 0: //OverviewFragment tab1 = new OverviewFragment(mUser,mUserUrl);
+               case 0: //Loading User Details
                return OverviewFragment.newInstance(mUser,mUserUrl);
 
-               case 1:
-                   return ReposFragment.newInstance(mUser);
+               case 1://Getting User Repos
+                   return ReposFragment.newInstance(mUser, "repos");
 
-               case 2:
-                   return FollowersFragment.newInstance(mUser);
+               case 2://Getting User Starred Repos
+                   return ReposFragment.newInstance(mUser, "starred");
 
-               case 3:
-                   return FollowingFragment.newInstance(mUser);
+               case 3://Getting User Followers
+                   return FollowersFragment.newInstance(mUser, "followers");
+
+               case 4://Getting User Following
+                   return FollowersFragment.newInstance(mUser, "following");
            }
             return null;
         }
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 4;
+            // Show 5 total pages.
+            return 5;
         }
     }
 }

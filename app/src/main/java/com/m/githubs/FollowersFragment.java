@@ -23,6 +23,8 @@ import retrofit2.Call;
 
 public class FollowersFragment extends Fragment {
     private String mUser;
+    private String mGetWhat;
+
     RecyclerView recyclerView;
 
     private OnFragmentInteractionListener mListener;
@@ -31,10 +33,11 @@ public class FollowersFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static FollowersFragment newInstance(String user) {
+    public static FollowersFragment newInstance(String user, String GetWhat) {
         FollowersFragment fragment = new FollowersFragment();
         Bundle args = new Bundle();
         args.putString("user", user);
+        args.putString("getWhat", GetWhat);
         fragment.setArguments(args);
         return fragment;
     }
@@ -44,6 +47,7 @@ public class FollowersFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mUser = getArguments().getString("user");
+            mGetWhat = getArguments().getString("getWhat");
         }
     }
 
@@ -62,7 +66,7 @@ public class FollowersFragment extends Fragment {
         try {
             Client client = new Client();
             Service apiService = Client.getClient().create(Service.class);
-            Call<List<Follower>> call = apiService.getUserFollowers("/users/"+mUser+"/followers?"+ Constants.TOKEN);
+            Call<List<Follower>> call = apiService.getUserFollowers("/users/"+mUser+"/"+mGetWhat+"?"+ Constants.TOKEN);
             call.enqueue(new retrofit2.Callback<List<Follower>>() {
                 @Override
                 public void onResponse(Call<List<Follower>> call, retrofit2.Response<List<Follower>> response) {
