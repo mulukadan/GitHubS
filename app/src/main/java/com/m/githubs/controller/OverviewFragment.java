@@ -1,6 +1,5 @@
-package com.m.githubs;
+package com.m.githubs.controller;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,40 +11,28 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
+import com.m.githubs.Constants;
+import com.m.githubs.R;
 import com.m.githubs.api.Client;
 import com.m.githubs.api.Service;
 import com.m.githubs.model.User;
 
 import org.parceler.Parcels;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 import retrofit2.Call;
 import retrofit2.Callback;
 
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link OverviewFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link OverviewFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class OverviewFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
     android.widget.Toolbar mActionBarToolbar;
     String mUser, mUserUrl;
-
-//    private User mUser;
 
     private OnFragmentInteractionListener mListener;
 
@@ -81,6 +68,8 @@ public class OverviewFragment extends Fragment {
         final TextView Created = (TextView) view.findViewById(R.id.created);
         final TextView Repos = (TextView) view.findViewById(R.id.repos);
         final TextView Bio = (TextView) view.findViewById(R.id.bio);
+        final TextView Location = (TextView) view.findViewById(R.id.location);
+        final TextView Company = (TextView) view.findViewById(R.id.company);
         final ImageView imageView = (ImageView) view.findViewById(R.id.uer_image_header);
 
         try {
@@ -99,6 +88,8 @@ public class OverviewFragment extends Fragment {
                     String repos = String.valueOf(response.body().getPublicRepos());
                     String created = String.valueOf(response.body().getCreatedAt());
                     String bio = response.body().getBio();
+                    String loc = response.body().getLocation();
+                    String company = response.body().getCompany();
                     mUserUrl = response.body().getHtmlUrl();
                     Link.setText(htmlUrl);
                     Linkify.addLinks(Link, Linkify.WEB_URLS);
@@ -109,6 +100,8 @@ public class OverviewFragment extends Fragment {
                     Repos.setText(repos);
                     Created.setText("Created on: "+created.substring(0,9));
                     Bio.setText(bio);
+                    Location.setText(loc);
+                    Company.setText(company);
 
                     Glide.with(imageView.getContext())
                             .load(avatarUrl)

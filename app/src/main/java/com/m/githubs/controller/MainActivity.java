@@ -14,18 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.m.githubs.Constants;
-import com.m.githubs.ItemAdapter;
+import com.m.githubs.adapters.ItemAdapter;
 import com.m.githubs.R;
 import com.m.githubs.api.Client;
 import com.m.githubs.api.Service;
 import com.m.githubs.model.Item;
 import com.m.githubs.model.ItemResponse;
 
-import java.io.IOException;
 import java.util.List;
 
-import okhttp3.Callback;
-import okhttp3.Response;
 import retrofit2.Call;
 
 public class MainActivity extends AppCompatActivity {

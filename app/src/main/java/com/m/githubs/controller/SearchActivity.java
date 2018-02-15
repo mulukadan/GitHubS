@@ -4,31 +4,20 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.util.Linkify;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.m.githubs.Constants;
 import com.m.githubs.R;
-import com.m.githubs.ReposAdapter;
-import com.m.githubs.UserTabActivity;
 import com.m.githubs.api.Client;
 import com.m.githubs.api.Service;
-import com.m.githubs.model.Repo;
 import com.m.githubs.model.User;
 
-import java.util.List;
-
-import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 import retrofit2.Call;
 import retrofit2.Callback;
-
-import static android.content.ContentValues.TAG;
-import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener{
 

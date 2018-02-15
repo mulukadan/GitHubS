@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.m.githubs.OverviewFragment"
+    tools:context="com.m.githubs.controller.OverviewFragment"
     android:background="@color/graylight">
 
     <RelativeLayout
@@ -151,22 +151,92 @@
             android:background="@color/divider"
             android:textAlignment="center"
             android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/link"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="GitHub Link:"
-            android:textColor="#0bcce6"
-            android:textAlignment="center"
-            android:textStyle="italic"/>
-        <TextView
-            android:id="@+id/created"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_weight="2"
+                android:src="@drawable/location_on_black_24dp"/>
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location:"
+                android:textColor="#0bcce6"
+
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Created"
-            android:textColor="@color/secondary_text"
-            android:textAlignment="center"
-            android:textStyle="bold"/>
+            android:layout_marginTop="10sp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_weight="2"
+                android:src="@drawable/company_black_24dp"/>
+            <TextView
+                android:id="@+id/company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location:"
+                android:textColor="#0bcce6"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_weight="2"
+                android:src="@drawable/link_black_24dp"/>
+            <TextView
+                android:id="@+id/link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="GitHub Link:"
+                android:textColor="#0bcce6"
+
+                android:textStyle="italic"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_weight="2"
+                android:src="@drawable/ic_access_time_black_24dp"/>
+            <TextView
+                android:id="@+id/created"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Created"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
+
+
+
 
     </LinearLayout>
 

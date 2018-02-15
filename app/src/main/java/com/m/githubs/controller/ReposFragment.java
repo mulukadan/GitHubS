@@ -1,4 +1,4 @@
-package com.m.githubs;
+package com.m.githubs.controller;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.m.githubs.Constants;
+import com.m.githubs.R;
+import com.m.githubs.adapters.ReposAdapter;
 import com.m.githubs.api.Client;
 import com.m.githubs.api.Service;
 import com.m.githubs.model.Repo;

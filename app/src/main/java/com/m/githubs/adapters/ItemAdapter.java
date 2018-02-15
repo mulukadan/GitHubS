@@ -1,4 +1,4 @@
-package com.m.githubs;
+package com.m.githubs.adapters;
 
 import android.content.Context;
 
@@ -12,9 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.m.githubs.controller.DetailActivity;
+import com.m.githubs.R;
+import com.m.githubs.controller.UserTabActivity;
 import com.m.githubs.model.Item;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 

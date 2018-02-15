@@ -1,6 +1,5 @@
-package com.m.githubs;
+package com.m.githubs.controller;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,10 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.m.githubs.Constants;
+import com.m.githubs.R;
+import com.m.githubs.adapters.FollowerAdapter;
 import com.m.githubs.api.Client;
 import com.m.githubs.api.Service;
 import com.m.githubs.model.Follower;
-import com.m.githubs.model.Repo;
 
 import java.util.List;
 

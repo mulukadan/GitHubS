@@ -1,4 +1,4 @@
-package com.m.githubs;
+package com.m.githubs.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.m.githubs.R;
+import com.m.githubs.controller.UserTabActivity;
 import com.m.githubs.model.Follower;
 
 import java.util.List;
