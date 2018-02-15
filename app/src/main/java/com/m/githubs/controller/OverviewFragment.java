@@ -1,5 +1,6 @@
 package com.m.githubs.controller;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -32,7 +33,7 @@ public class OverviewFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
     android.widget.Toolbar mActionBarToolbar;
-    String mUser, mUserUrl;
+    String mUser, mUserUrl, mavatarUrl;
 
     private OnFragmentInteractionListener mListener;
 
@@ -71,6 +72,13 @@ public class OverviewFragment extends Fragment {
         final TextView Location = (TextView) view.findViewById(R.id.location);
         final TextView Company = (TextView) view.findViewById(R.id.company);
         final ImageView imageView = (ImageView) view.findViewById(R.id.uer_image_header);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mavatarUrl));
+                startActivity(intent);
+            }
+        });
 
         try {
             Client client = new Client();
@@ -81,6 +89,7 @@ public class OverviewFragment extends Fragment {
                 public void onResponse(Call<User> call, retrofit2.Response<User> response) {
                     String login = response.body().getLogin();
                     String avatarUrl = response.body().getAvatarUrl();
+                    mavatarUrl = avatarUrl;
                     String name = response.body().getName();
                     String htmlUrl = response.body().getHtmlUrl();
                     String followers = String.valueOf(response.body().getFollowers());

@@ -12,6 +12,9 @@ public class Repo {
     @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("html_url")
+    @Expose
+    private String htmlUrl;
     @SerializedName("pushed_at")
     @Expose
     private String pushedAt;
@@ -39,6 +42,11 @@ public class Repo {
     public void setName(String name) {
         this.name = name;
     }
+
+
+    public String getHtmlUrl() {return htmlUrl; }
+
+    public void setHtmlUrl(String htmlUrl) {this.htmlUrl = htmlUrl; }
 
     public String getPushedAt() {
         return pushedAt;

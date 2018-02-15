@@ -55,7 +55,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             finish();
-            Intent intent = new Intent(LogInActivity.this, SearchActivity.class);
+            Intent intent = new Intent(LogInActivity.this, SearchTabActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
@@ -133,7 +133,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                             finish();
                             Toast.makeText(getApplicationContext(),"User registered", Toast.LENGTH_SHORT ).show();
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(LogInActivity.this, SearchActivity.class);
+                            Intent intent = new Intent(LogInActivity.this, SearchTabActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
 //                            updateUI(user);
@@ -167,7 +167,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                             finish();
                             Toast.makeText(getApplicationContext(),"Login successful", Toast.LENGTH_SHORT ).show();
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(LogInActivity.this, SearchActivity.class);
+                            Intent intent = new Intent(LogInActivity.this, SearchTabActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
 //                            updateUI(user);

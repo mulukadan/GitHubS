@@ -1,4 +1,4 @@
-package com.m.githubs.controller;
+package com.m.githubs;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -7,43 +7,40 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.m.githubs.Constants;
 import com.m.githubs.adapters.ItemAdapter;
-import com.m.githubs.R;
+import com.m.githubs.adapters.ReposAdapter;
 import com.m.githubs.api.Client;
 import com.m.githubs.api.Service;
+import com.m.githubs.controller.MainActivity;
 import com.m.githubs.model.Item;
 import com.m.githubs.model.ItemResponse;
+import com.m.githubs.model.Repo;
+import com.m.githubs.model.RepoResponse;
 
 import java.util.List;
 
 import retrofit2.Call;
 
-public class MainActivity extends AppCompatActivity {
-    private String mLocation,mLanguage;
-
-    private RecyclerView recyclerView;
-    TextView Disconnected;
-    private Item item;
-    ProgressDialog pd;
+public class ReposActivity extends AppCompatActivity {
+    private String keyword, language;
+    private ProgressDialog pd;
     private SwipeRefreshLayout swipeContainer;
-
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_repos);
 
         Intent intent = getIntent();
-        mLocation = intent.getStringExtra("location");
-        mLanguage = intent.getStringExtra("language");
-        getSupportActionBar().setTitle(mLanguage + " Gurus in "+mLocation);
+        keyword = intent.getStringExtra("keyword");
+        language = intent.getStringExtra("language");
+        getSupportActionBar().setTitle("Search Results");
 
         initViews();
 
@@ -53,13 +50,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 loadJSON();
-                Toast.makeText(MainActivity.this,"Github Users refreshed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ReposActivity.this,"Repos refreshed", Toast.LENGTH_SHORT).show();
             }
         });
     }
     private  void  initViews(){
         pd = new ProgressDialog(this);
-        pd.setMessage("Fetching Github Users....");
+        pd.setMessage("Searching Github Repos....");
         pd.setCancelable(false);
         pd.show();
         recyclerView=(RecyclerView) findViewById(R.id.recyclerView);
@@ -69,16 +66,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadJSON(){
-        Disconnected = (TextView) findViewById(R.id.disconnected);
         try {
             Client client = new Client();
             Service apiService = Client.getClient().create(Service.class);
-            Call<ItemResponse> call = apiService.getItems("/search/users?q=language:"+mLanguage+"+location:"+mLocation+"&per_page=100&"+ Constants.TOKEN);
-            call.enqueue(new retrofit2.Callback<ItemResponse>() {
+            Call<RepoResponse> call = apiService.getRepos("/search/repositories?q="+keyword+"+language:"+language+"&sort=stars&order=desc&per_page=100&"+ Constants.TOKEN);
+            call.enqueue(new retrofit2.Callback<RepoResponse>() {
                 @Override
-                public void onResponse(Call<ItemResponse> call, retrofit2.Response<ItemResponse> response) {
-                    List<Item> items = response.body().getItems();
-                    recyclerView.setAdapter(new ItemAdapter(getApplicationContext(),items));
+                public void onResponse(Call<RepoResponse> call, retrofit2.Response<RepoResponse> response) {
+                    List<Repo> repos = response.body().getItems();
+                    recyclerView.setAdapter(new ReposAdapter(getApplicationContext(),repos));
 
                     recyclerView.smoothScrollToPosition(0);
                     swipeContainer.setRefreshing(false);
@@ -86,17 +82,17 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<ItemResponse> call, Throwable t) {
+                public void onFailure(Call<RepoResponse> call, Throwable t) {
                     Log.d("Error: ",t.getMessage());
-                    Toast.makeText(MainActivity.this, "Error Fecthing Data!", Toast.LENGTH_SHORT).show();
-                    Disconnected.setVisibility(View.VISIBLE);
+                    Toast.makeText(ReposActivity.this, "Error Fecthing Data!", Toast.LENGTH_SHORT).show();
+
                     pd.hide();
                 }
             });
 
         }catch (Exception e){
             Log.d("Error: " , e.getMessage());
-            Toast.makeText(MainActivity.this, e.getMessage(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(ReposActivity.this, e.getMessage(),Toast.LENGTH_SHORT).show();
         }
     }
 }

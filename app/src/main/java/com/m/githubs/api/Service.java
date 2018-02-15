@@ -3,6 +3,7 @@ package com.m.githubs.api;
 import com.m.githubs.model.Follower;
 import com.m.githubs.model.ItemResponse;
 import com.m.githubs.model.Repo;
+import com.m.githubs.model.RepoResponse;
 import com.m.githubs.model.User;
 
 import java.util.List;
@@ -18,6 +19,9 @@ import retrofit2.http.Url;
 public interface Service {
     @GET
     Call<ItemResponse> getItems(@Url String url);
+
+    @GET
+    Call<RepoResponse> getRepos(@Url String url);
 
     @GET
     Call <User> getUser(@Url String url);

@@ -42,7 +42,18 @@
             android:label="@string/title_activity_user_tab"
             android:parentActivityName=".controller.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LogInActivity" android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".LogInActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SearchTabActivity"
+            android:label="@string/title_activity_search_tab"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ReposActivity"
+            android:parentActivityName=".controller.MainActivity"
+
+            ></activity>
     </application>
 
 </manifest>

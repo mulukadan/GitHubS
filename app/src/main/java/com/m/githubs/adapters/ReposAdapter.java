@@ -1,6 +1,9 @@
 package com.m.githubs.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +52,17 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> 
                 }
         viewHolder.size.setText(sizeString);
         viewHolder.language.setText(repos.get(position).getLanguage());
+
+        final String Repourl = repos.get(position).getHtmlUrl().toString();
+
+        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Repourl));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -58,6 +72,7 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView name, folk, date, language,size;
+        private CardView cardView;
 
         public ViewHolder(View view){
             super(view);
@@ -66,26 +81,9 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> 
             date=(TextView) view.findViewById(R.id.date);
             size=(TextView) view.findViewById(R.id.size);
             language=(TextView) view.findViewById(R.id.language);
+            cardView = (CardView)view.findViewById(R.id.cardview);
 
-            //On item Click
-//            imageView.setOnClickListener(new View.OnClickListener(){
-//
-//                @Override
-//                public void onClick(View v) {
-//                    int pos = getAdapterPosition();
-//                    if(pos != RecyclerView.NO_POSITION){
-//                        Item clickedDataItem = items.get(pos);
-////                        Intent intent = new Intent(context, DetailActivity.class);
-//                        Intent intent = new Intent(context, UserTabActivity.class);
-//                        intent.putExtra("login", items.get(pos).getLogin());
-//                        intent.putExtra("html_url", items.get(pos).getHtmlUrl());
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        context.startActivity(intent);
-//                        Toast.makeText(v.getContext(), "Loading " + clickedDataItem.getLogin()+"...", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//            });
-        }
+            }
 
     }
 }
